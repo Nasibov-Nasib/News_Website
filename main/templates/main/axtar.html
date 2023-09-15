@@ -1,0 +1,44 @@
+{% extends 'main/layout.html' %}
+{% block content %}
+
+
+<div class="col-lg-9 stretch-card grid-margin">
+    <div class="card">
+      <div class="card-body">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        {% for x in newsdata %}        <div class="row">
+          <div class="col-sm-4 grid-margin">
+            <div class="position-relative">
+              <div class="rotate-img">
+                <a href="{% url 'singlepage' x.id %}"><img src="{{x.foto}}" alt="thumb" class="img-fluid"></a>
+              </div>
+              <div class="badge-positioned">
+                <a href="{% url 'singlepage' x.id %}"><span class="badge badge-danger font-weight-bold">{{x.kateqoriya}}</span></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-8  grid-margin">
+            <h2 class="mb-2 font-weight-600">
+              <a style="color: black;" href="{% url 'singlepage' x.id %}">{{x.basliq}}</a>
+            </h2>
+            <div class="fs-13 mb-2">
+              {{x.tarix}}
+            </div>
+            <p class="mb-0">
+              {{x.metn|truncatechars:160 }}
+            </p>
+          </div>
+        </div>
+      {% endfor %}
+
+        
+
+        
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}
+
+  
